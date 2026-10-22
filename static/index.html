@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050919" />
+    <title>Twilio + Gemini Live Voice Agent</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/dashboard.css" />
+    <script src="/assets/dashboard.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-signal" aria-hidden="true">
+            <i></i><i></i><i></i>
+          </span>
+          <span>
+            <span class="eyebrow">TWILIO · GEMINI LIVE</span>
+            <strong>Voice Agent</strong>
+          </span>
+        </div>
+        <div class="system-status" id="system-status" data-tone="ready">
+          <span class="status-dot"></span>
+          <span id="system-status-text">Dashboard ready</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="page-title">
+          <p class="hero-kicker">REAL-TIME VOICE, MADE VISIBLE</p>
+          <h1 id="page-title">Hear the agent.<br />See the stack.</h1>
+          <p class="hero-copy">
+            Call the Twilio number to watch a Gemini Live conversation move through audio,
+            transcripts, and Python tools in real time.
+          </p>
+          <div class="tech-strip" aria-label="Voice agent configuration">
+            <span><small>MODEL</small><b id="model-chip">gemini-3.8-live</b></span>
+            <span><small>TRANSPORT</small><b>media streams</b></span>
+            <span><small>MODE</small><b>full duplex</b></span>
+          </div>
+        </section>
+
+        <section class="console-card" aria-labelledby="conversation-title">
+          <header class="section-bar">
+            <span id="conversation-title">01 · LIVE CONVERSATION</span>
+            <span id="section-state">WAITING FOR A CALL</span>
+          </header>
+
+          <div class="console-grid">
+            <div class="transcript-column">
+              <div class="panel-heading">
+                <div>
+                  <p class="panel-label">TRANSCRIPT</p>
+                  <h2>Conversation stream</h2>
+                </div>
+                <div class="live-indicator" id="live-indicator" data-live="false">
+                  <span></span> <b id="live-label">Idle</b>
+                </div>
+              </div>
+              <div class="transcript-feed" id="transcript-feed" aria-live="polite">
+                <div class="empty-state" id="transcript-empty">
+                  <div class="empty-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                  <strong>Waiting for a conversation</strong>
+                  <span>Call your connected Twilio number to start the stream.</span>
+                </div>
+              </div>
+            </div>
+
+            <aside class="call-column" aria-label="Call details and tool activity">
+              <div class="call-overview">
+                <div class="panel-heading compact">
+                  <div>
+                    <p class="panel-label">CURRENT CALL</p>
+                    <h2 id="call-title">No active call</h2>
+                  </div>
+                  <div class="call-timer" id="call-timer">00:00</div>
+                </div>
+                <dl class="call-facts">
+                  <div><dt>Call SID</dt><dd id="call-sid">—</dd></div>
+                  <div><dt>Model</dt><dd id="call-model">—</dd></div>
+                  <div><dt>Interruptions</dt><dd id="interruptions">0</dd></div>
+                </dl>
+                <div class="audio-meter" id="audio-meter" data-live="false" aria-label="Audio activity">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+
+              <div class="tools-panel">
+                <div class="tools-heading">
+                  <span class="panel-label">TOOL ACTIVITY</span>
+                  <span id="tool-count">0 calls</span>
+                </div>
+                <div class="tool-list" id="tool-list">
+                  <p class="tool-empty">Function calls will appear here.</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="architecture-card" aria-labelledby="architecture-title">
+          <header class="section-bar">
+            <span id="architecture-title">02 · ARCHITECTURE</span>
+            <span>AUDIO + EVENTS</span>
+          </header>
+          <div class="architecture" id="architecture" data-status="idle">
+            <div class="architecture-node">
+              <span class="node-index">01</span>
+              <strong>Caller</strong>
+              <small>Phone audio</small>
+            </div>
+            <div class="architecture-link"><span>μ-law · 8 kHz</span><i></i></div>
+            <div class="architecture-node">
+              <span class="node-index">02</span>
+              <strong>Twilio Voice</strong>
+              <small>Media Streams</small>
+            </div>
+            <div class="architecture-link"><span>Secure WSS</span><i></i></div>
+            <div class="architecture-node">
+              <span class="node-index">03</span>
+              <strong>Agent Connect</strong>
+              <small>Python provider</small>
+            </div>
+            <div class="architecture-link"><span>PCM audio</span><i></i></div>
+            <div class="architecture-node">
+              <span class="node-index">04</span>
+              <strong>Gemini Live</strong>
+              <small>Native voice</small>
+            </div>
+            <div class="architecture-link"><span>Function call</span><i></i></div>
+            <div class="architecture-node">
+              <span class="node-index">05</span>
+              <strong>Python tools</strong>
+              <small>Business logic</small>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <span>TWILIO AGENT CONNECT × GEMINI LIVE</span>
+          <span>PYTHON DEMO</span>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
